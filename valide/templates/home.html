@@ -1,0 +1,91 @@
+<!-- validationApp/templates/home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-image: url('https://img.freepik.com/free-photo/ai-generated-house-design_23-2150666385.jpg?t=st=1702985862~exp=1702989462~hmac=91ea70e4192984ee17dc8880a3ed8302f8cf24e3a9c7c3b94de2da7580691bd6&w=900');  /* Replace with the URL of your online image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;  /* Set text color to white or another contrasting color */
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-button:hover {
+            background-color: #45a049;
+        }
+        table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+}
+.video-container {
+            margin-top: 50px;
+            width: 100%;
+            height: 100%;
+
+           
+        }
+    </style>
+</head>
+<body>
+      <div class="button-container">
+        <a href="{% url 'home' %}" class="action-button">Home</a>
+        <a href="{% url 'participant_form' %}" class="action-button">Add Participant</a>
+        <a href="{% url 'participant_list' %}" class="action-button">View Participants</a>
+        <a href="{% url 'vehicle_form' %}" class="action-button">Add Vehicle</a>
+        <a href="{% url 'vehicle_list' %}" class="action-button">View Vehicles</a>
+    </div>
+    
+        <div class="video-container">
+            <video width="100%" height="315" controls autoplay muted loop>
+                <source src="/media/ads.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div style="margin-top: 10px;">
+            <marquee> REGISTER WITH ADD PARTICIPANT TO JOIN NEW OUR EVENT NOW</marquee>
+        </div>
+    
+</body>
+</html>

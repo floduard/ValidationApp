@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant</title>
+    <style>
+    table, td, th {  
+        border: 4px solid #000000;
+        text-align: left;
+      }
+      
+      table {
+        border-collapse: collapse;
+        width: fit-content;
+        margin-left: 50px;
+        border-radius: 5px;
+        border-color: black;
+        border-block: 5px;
+        color: blue;
+
+      }
+      
+      th, td {
+        padding: 15px;
+        block-size: 5px;
+      }
+      body {
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+          
+            text-align: center;
+            padding: 20px;
+            background-image: url('https://img.freepik.com/free-photo/ai-generated-house-design_23-2150666385.jpg?t=st=1702985862~exp=1702989462~hmac=91ea70e4192984ee17dc8880a3ed8302f8cf24e3a9c7c3b94de2da7580691bd6&w=900');  /* Replace with the URL of your online image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+              /* Set text color to white or another contrasting color */
+        }
+      .action-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="action-button">Home</a>
+    </header>
+    <h2>Currently Enrolled participants</h2>
+
+    {% if participants %}
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Date of Birth</th>
+                    <th>Reference Number</th>
+                    <th>Gender</th>
+                    <th>Vehicle</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for participant in participants %}
+                    <tr>
+                        <td>{{ participant.first_name }}</td>
+                        <td>{{ participant.last_name }}</td>
+                        <td>{{ participant.email }}</td>
+                        <td>{{ participant.phone }}</td>
+                        <td>{{ participant.date_of_birth }}</td>
+                        <td>{{ participant.reference_number }}</td>
+                        <td>{{ participant.gender }}</td>
+                        <td>{{ participant.vehicle }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No participants found.</p>
+    {% endif %}
+</body>
+</html>

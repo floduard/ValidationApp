@@ -1,0 +1,102 @@
+<!-- validationApp/templates/vehicle_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Form</title>
+    <!-- ... (other parts of your template) ... -->
+
+<style>
+      body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-image: url('https://img.freepik.com/free-photo/ai-generated-house-design_23-2150666385.jpg?t=st=1702985862~exp=1702989462~hmac=91ea70e4192984ee17dc8880a3ed8302f8cf24e3a9c7c3b94de2da7580691bd6&w=900');  /* Replace with the URL of your online image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+              /* Set text color to white or another contrasting color */
+        }
+    /* Your existing styles go here */
+
+    /* Add inline styles to the form elements */
+    form input,
+    form select,
+    form button {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+    form input:focus,
+    form select:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+
+    form button {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    form button:hover {
+        background-color: #45a049;
+    }
+
+    .vehicle-input {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .remove-vehicle-button {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .remove-vehicle-button:hover {
+        background-color: #bd2130;
+    }
+    .container {
+        max-width: fit-content;
+        /* max-height: fit-content; */
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<!-- ... (other parts of your template) ... -->
+
+</head>
+<body>
+    <div class=" container">
+    <strong>Add Vehicle</strong>
+    <form method="post" action="{% url 'vehicle_form' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>

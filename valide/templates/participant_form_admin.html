@@ -1,0 +1,159 @@
+
+<style>
+     body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-image: url('https://img.freepik.com/free-photo/ai-generated-house-design_23-2150666385.jpg?t=st=1702985862~exp=1702989462~hmac=91ea70e4192984ee17dc8880a3ed8302f8cf24e3a9c7c3b94de2da7580691bd6&w=900');  /* Replace with the URL of your online image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+             /* Set text color to white or another contrasting color */
+        }
+
+    .container {
+        max-width: fit-content;
+        max-height: fit-content;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .form-section {
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, select {
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .add-vehicle-button,
+    .remove-vehicle-button,
+    .submit-button {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .add-vehicle-button:hover,
+    .remove-vehicle-button:hover,
+    .submit-button:hover {
+        background-color: #45a049;
+    }
+
+    .vehicle-input {
+        margin-bottom: 10px;
+    }
+
+    .remove-vehicle-button {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 4px 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .remove-vehicle-button:hover {
+        background-color: #bd2130;
+    }
+    #hiddenForm {
+      display: none;
+    }
+    #hiddenForm label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    #hiddenForm input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    #hiddenForm button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+</style>
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Enrol Participant</h2>
+        <form method="post" action="{% url 'participant_form' %}" class="participant-form">
+            {% csrf_token %}
+            <div class="form-section">
+                {{ form.as_p }}
+                <button type="button" onclick="openHiddenForm()" class="add-vehicle-button">Add Vehicle</button>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+        
+          <form id="hiddenForm" method="post" action="{% url 'vehicle_form' %}">
+            
+            {% csrf_token %}
+            {{ VehicleForm.as_p }}
+            <button type="button" onclick="submitHiddenForm()">Submit</button>
+        
+        </form>
+       
+    </div>
+
+
+    <script>
+        function openHiddenForm() {
+          var hiddenForm = document.getElementById('hiddenForm').outerHTML;
+    
+          // Calculate the center position
+          var screenWidth = window.screen.width;
+          var screenHeight = window.screen.height;
+          var windowWidth = 400;
+          var windowHeight = 400;
+          var left = (screenWidth - windowWidth) / 2;
+          var top = (screenHeight - windowHeight) / 2;
+    
+          // Open a new window centered on the screen
+          var newWindow = window.open('', '_blank', 'width=600,height=500,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,top=' + top + ',left=' + left);
+          
+          // Write the hidden form HTML to the new window
+          newWindow.document.write(hiddenForm);
+          newWindow.document.close();
+        }
+
+        function submitHiddenForm() {
+      alert('Vehicle added  successfully!');
+
+      window.close();
+    }
+      </script>
+
+{% endblock %}
