@@ -11,7 +11,7 @@
         }
 
     .container {
-        max-width: fit-content;
+        max-width: 40%;
         max-height: fit-content;
         margin: 50px auto;
         background-color: #fff;
@@ -100,10 +100,33 @@
       border-radius: 4px;
       cursor: pointer;
     }
+        .action-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-button:hover {
+            background-color: #45a049;
+        }
+        table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
 </style>
 
 {% block title %}{% endblock %}
-
+<header>
+    <a href="{% url 'home' %}" class="action-button">Home</a>
+</header>
 {% block content %}
     <div class="container">
         <h2>Enrol Participant</h2>
@@ -111,7 +134,7 @@
             {% csrf_token %}
             <div class="form-section">
                 {{ form.as_p }}
-                <button type="button" onclick="openHiddenForm()" class="add-vehicle-button">Add Vehicle</button>
+                <button type="button" onclick="openHiddenForm()" class="add-vehicle-button">Add vehicle</button>
             </div>
             <br>
             <br>
@@ -121,7 +144,7 @@
           <form id="hiddenForm" method="post" action="{% url 'vehicle_form' %}">
             
             {% csrf_token %}
-            {{ VehicleForm.as_p }}
+            {{ vehicle1Form.as_p }}
             <button type="button" onclick="submitHiddenForm()">Submit</button>
         
         </form>
@@ -150,7 +173,7 @@
         }
 
         function submitHiddenForm() {
-      alert('Vehicle added  successfully!');
+      alert('vehicle added  successfully!');
 
       window.close();
     }

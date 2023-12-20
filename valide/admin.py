@@ -1,6 +1,9 @@
-# validationApp/admin.py
 from django.contrib import admin
-from .models import Participant, Vehicle
+from .models import Participant, vehicle
 
 admin.site.register(Participant)
-admin.site.register(Vehicle)
+admin.site.register(vehicle)
+
+
+
+

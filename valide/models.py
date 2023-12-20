@@ -1,11 +1,10 @@
-# validationApp/models.py
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
 from datetime import datetime
 
-class Vehicle(models.Model):
+class vehicle(models.Model):
     model = models.CharField(max_length=50)
-    make = models.CharField(max_length=50)  # Remove choices to allow custom input
+    make = models.CharField(max_length=50) 
     license = models.CharField(max_length=20)
     manufacture_date = models.DateField(validators=[
         MinValueValidator(datetime(2000, 1, 1).date())
@@ -48,7 +47,7 @@ class Participant(models.Model):
     date_of_birth = models.DateField()
     reference_number = models.IntegerField(validators=[MinValueValidator(99), MaxValueValidator(999)])
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    vehicle = models.ForeignKey('Vehicle', on_delete=models.SET_NULL, null=True, blank=True)
+    vehicle = models.ForeignKey('vehicle', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
